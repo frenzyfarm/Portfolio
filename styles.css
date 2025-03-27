@@ -1,0 +1,507 @@
+/* Variables */
+:root {
+    --primary-color: #00ff00;
+    --secondary-color: #003300;
+    --accent-color: #99ff99;
+}
+
+/* Styles généraux */
+body {
+    position: relative;
+    font-family: 'Courier New', monospace;
+    background-color: transparent;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--primary-color);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 10, 0, 0.95);
+}
+
+#particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cyber-name {
+    color: var(--primary-color);
+    font-size: 5rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--primary-color);
+    margin: 0;
+}
+
+.cyber-title {
+    color: #fff;
+    font-size: 1.8rem;
+    margin: 2rem 0;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Autres sections */
+section:not(.hero-section) {
+    background-color: rgba(0, 5, 0, 0.95);
+    position: relative;
+    z-index: 3;
+}
+
+.cyber-animation {
+    text-align: center;
+}
+
+.cyber-icon {
+    font-size: 150px;
+    color: var(--primary-color);
+    animation: pulse 2s infinite;
+}
+
+/* Skill Cards */
+.skill-card {
+    background: rgba(0, 20, 0, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--primary-color);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+}
+
+.skill-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Project Cards */
+.project-card {
+    background: rgba(0, 20, 0, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--primary-color);
+    padding: 2rem;
+    border-radius: 10px;
+    height: 100%;
+    transition: transform 0.3s;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+}
+
+.tech-stack {
+    margin-top: 1rem;
+}
+
+.badge {
+    margin-right: 0.5rem;
+    background-color: var(--secondary-color) !important;
+    transition: transform 0.3s ease;
+}
+
+/* Contact Form */
+.contact-form input,
+.contact-form textarea {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--primary-color);
+    color: white;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background: rgba(0, 255, 0, 0.2);
+    border-color: var(--accent-color);
+    color: white;
+    box-shadow: none;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes socialPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Boutons */
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: black;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: black;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cyber-name {
+        font-size: 3rem;
+    }
+    
+    .cyber-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Images */
+.cyber-image img,
+.project-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-link {
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.social-link:hover {
+    color: var(--accent-color);
+    transform: translateY(-5px) scale(1.1);
+    text-shadow: 0 0 20px var(--accent-color);
+}
+
+/* Ajout de l'arrière-plan Matrix */
+.matrix-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #000;
+}
+
+/* Animation Matrix */
+@keyframes matrix {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+/* Ajout du script Matrix en CSS */
+.matrix-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background-image: linear-gradient(0deg, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 255, 0, 0.05) 50%,
+        rgba(0, 0, 0, 0) 100%
+    ),
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==");
+    animation: matrix 20s linear infinite;
+}
+
+/* Effet glitch */
+.text-gradient {
+    transition: text-shadow 0.1s ease;
+}
+
+/* Animation des cartes au hover */
+.skill-card, .project-card {
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover, .project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+}
+
+/* Animation des badges */
+.badge:hover {
+    transform: rotate(5deg) scale(1.2);
+}
+
+/* Suppression des anciens styles */
+.name-tag,
+.typing-container,
+.console-line,
+.console-text {
+    display: none;
+}
+
+/* Ajustement des marges entre les sections */
+section + section {
+    margin-top: 0;
+}
+
+/* Ajustement des espacements */
+.py-5 {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+}
+
+/* Style de la console et du typing */
+.console-container {
+    font-family: 'Courier New', monospace;
+    background: rgba(0, 20, 0, 0.7);
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.console-line {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.console-text {
+    color: white;
+    position: relative;
+}
+
+.console-text::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 16px;
+    background-color: var(--primary-color);
+    animation: blink 1s step-end infinite;
+}
+
+.typing-container {
+    min-height: 2em;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Ajustement des espacements */
+.cyber-name {
+    margin-bottom: 0.5rem;
+}
+
+#typed-text {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Terminal styling */
+.terminal-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 10, 0, 0.9);
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.terminal-header {
+    background: rgba(0, 40, 0, 0.9);
+    padding: 8px 15px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.terminal-title {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.terminal-body {
+    padding: 25px;
+    color: white;
+    min-height: 250px;
+}
+
+.command-line {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.prompt {
+    color: var(--primary-color);
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.command {
+    position: relative;
+    color: white;
+}
+
+.command-output {
+    margin-left: 0px;
+    margin-bottom: 15px;
+    color: #cccccc;
+    opacity: 0.9;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    line-height: 1.6;
+}
+
+.command-output div {
+    margin-bottom: 1.2rem;
+    font-family: 'Courier New', monospace;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Animation pour les lignes de chargement */
+@keyframes blink-loading {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.command-output div:first-child {
+    animation: blink-loading 1s infinite;
+}
+
+/* Style pour le message d'accès */
+.command-output div:first-child span[style*="✓"] {
+    text-shadow: 0 0 10px #4CAF50;
+}
+
+/* Effet hover amélioré */
+.command-output div:hover {
+    background: rgba(0, 255, 0, 0.1);
+    border-radius: 4px;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+.green-text {
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+.command.active::after {
+    content: '|';
+    color: var(--primary-color);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .terminal-container {
+        width: 95%;
+    }
+    
+    .terminal-body {
+        min-height: 150px;
+    }
+}
+
+/* Animation pour le nom */
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 5px #4CAF50;
+    }
+    50% {
+        text-shadow: 0 0 15px #4CAF50, 0 0 25px #4CAF50;
+    }
+    100% {
+        text-shadow: 0 0 5px #4CAF50;
+    }
+}
+
+.command-output div:first-child {
+    animation: none; /* Suppression du clignotement */
+}
+
+.command-output div:first-child span:last-child {
+    animation: glowPulse 2s ease-in-out infinite;
+    display: inline-block;
+}
