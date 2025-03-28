@@ -54,6 +54,142 @@ particlesJS('particles-container', {
     retina_detect: true
 });
 
+// Configuration des particules pour les pages de projets
+const projectParticlesConfig = {
+    pentesting: {
+        particles: {
+            number: { value: 120, density: { enable: true, value_area: 800 } },
+            color: { value: '#ff0000' },
+            shape: { type: 'triangle' },
+            opacity: { value: 0.7, random: true },
+            size: { value: 5, random: true },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#ff0000',
+                opacity: 0.5,
+                width: 2
+            },
+            move: {
+                enable: true,
+                speed: 4,
+                direction: 'none',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: true
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: { enable: true, mode: 'repulse' },
+                onclick: { enable: true, mode: 'push' },
+                resize: true
+            }
+        }
+    },
+    webDev: {
+        particles: {
+            number: { value: 100, density: { enable: true, value_area: 800 } },
+            color: { value: '#00ff00' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.6, random: true },
+            size: { value: 4, random: true },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#00ff00',
+                opacity: 0.4,
+                width: 2
+            },
+            move: {
+                enable: true,
+                speed: 3,
+                direction: 'none',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: true
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: { enable: true, mode: 'grab' },
+                onclick: { enable: true, mode: 'push' },
+                resize: true
+            }
+        }
+    },
+    reseau: {
+        particles: {
+            number: { value: 110, density: { enable: true, value_area: 800 } },
+            color: { value: '#0000ff' },
+            shape: { type: 'edge' },
+            opacity: { value: 0.6, random: true },
+            size: { value: 4, random: true },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#0000ff',
+                opacity: 0.5,
+                width: 2
+            },
+            move: {
+                enable: true,
+                speed: 3.5,
+                direction: 'none',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: true
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: { enable: true, mode: 'bubble' },
+                onclick: { enable: true, mode: 'push' },
+                resize: true
+            }
+        }
+    },
+    reverse: {
+        particles: {
+            number: { value: 90, density: { enable: true, value_area: 800 } },
+            color: { value: '#ffff00' },
+            shape: { type: 'star' },
+            opacity: { value: 0.6, random: true },
+            size: { value: 4, random: true },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#ffff00',
+                opacity: 0.5,
+                width: 2
+            },
+            move: {
+                enable: true,
+                speed: 3,
+                direction: 'none',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: true
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: { enable: true, mode: 'repulse' },
+                onclick: { enable: true, mode: 'push' },
+                resize: true
+            }
+        }
+    }
+};
+
 // Animation de texte avec Typed.js
 document.addEventListener('DOMContentLoaded', function() {
     // Configuration des particules
@@ -167,7 +303,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<span style="color: #4CAF50; font-size: 1.8rem; text-shadow: 0 0 10px #4CAF50;">le Réseau</span>',
                 '<span style="color: #4CAF50; font-size: 1.8rem; text-shadow: 0 0 10px #4CAF50;">le Développement</span>',
                 '<span style="color: #4CAF50; font-size: 1.8rem; text-shadow: 0 0 10px #4CAF50;">la Sécurité Web</span>',
-                '<span style="color: #4CAF50; font-size: 1.8rem; text-shadow: 0 0 10px #4CAF50;">le Reverse Engineering</span>',
                 '<span style="color: #4CAF50; font-size: 1.8rem; text-shadow: 0 0 10px #4CAF50;">le Bug Bounty</span>'
             ],
             typeSpeed: 50,
@@ -218,6 +353,118 @@ document.addEventListener('DOMContentLoaded', function() {
     // Démarrer l'animation du terminal
     terminalText.classList.add('active');
     setTimeout(typeWhoami, 1000);
+
+    // Initialisation des particules selon la page
+    const body = document.body;
+    const particlesContainer = document.getElementById('particles-container');
+    
+    if (particlesContainer) {
+        if (body.classList.contains('pentesting')) {
+            particlesJS('particles-container', projectParticlesConfig.pentesting);
+        } else if (body.classList.contains('web-dev')) {
+            particlesJS('particles-container', projectParticlesConfig.webDev);
+        } else if (body.classList.contains('reseau')) {
+            particlesJS('particles-container', projectParticlesConfig.reseau);
+        } else if (body.classList.contains('reverse')) {
+            particlesJS('particles-container', projectParticlesConfig.reverse);
+        }
+    }
+
+    // Animation des cartes de projet avec effets spécifiques
+    const projectCards = document.querySelectorAll('.project-card, .tech-item, .arch-card, .feature-card, .infra-card, .security-card, .analysis-card, .methodology-card');
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const body = document.body;
+            let glowColor = '#00ff00';
+            
+            if (body.classList.contains('pentesting')) {
+                glowColor = '#ff0000';
+            } else if (body.classList.contains('web-dev')) {
+                glowColor = '#00ff00';
+            } else if (body.classList.contains('reseau')) {
+                glowColor = '#0000ff';
+            } else if (body.classList.contains('reverse')) {
+                glowColor = '#ffff00';
+            }
+
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.boxShadow = `0 10px 20px rgba(0,0,0,0.2), 0 0 15px ${glowColor}`;
+            this.style.borderColor = glowColor;
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            this.style.borderColor = 'var(--primary-color)';
+        });
+    });
+
+    // Animation des titres de section avec effets spécifiques
+    const sectionTitles = document.querySelectorAll('.section-title');
+    sectionTitles.forEach(title => {
+        title.addEventListener('mouseenter', function() {
+            const body = document.body;
+            let glowColor = '#00ff00';
+            
+            if (body.classList.contains('pentesting')) {
+                glowColor = '#ff0000';
+            } else if (body.classList.contains('web-dev')) {
+                glowColor = '#00ff00';
+            } else if (body.classList.contains('reseau')) {
+                glowColor = '#0000ff';
+            } else if (body.classList.contains('reverse')) {
+                glowColor = '#ffff00';
+            }
+
+            this.style.transform = 'scale(1.05)';
+            this.style.textShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}`;
+        });
+        
+        title.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.textShadow = 'none';
+        });
+    });
+
+    // Animation des icônes avec rotation
+    const icons = document.querySelectorAll('.infra-icon, .security-icon, .analysis-icon, .methodology-icon');
+    icons.forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+            this.style.transform = 'rotate(360deg)';
+            this.style.transition = 'transform 0.5s ease';
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+            this.style.transform = 'rotate(0deg)';
+        });
+    });
+
+    // Animation du bouton retour
+    const backButton = document.querySelector('.back-button');
+    if (backButton) {
+        backButton.addEventListener('mouseenter', function() {
+            const body = document.body;
+            let glowColor = '#00ff00';
+            
+            if (body.classList.contains('pentesting')) {
+                glowColor = '#ff0000';
+            } else if (body.classList.contains('web-dev')) {
+                glowColor = '#00ff00';
+            } else if (body.classList.contains('reseau')) {
+                glowColor = '#0000ff';
+            } else if (body.classList.contains('reverse')) {
+                glowColor = '#ffff00';
+            }
+
+            this.style.transform = 'translateY(-5px) scale(1.1)';
+            this.style.boxShadow = `0 0 20px ${glowColor}`;
+        });
+        
+        backButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 0 15px rgba(0, 255, 0, 0.3)';
+        });
+    }
 });
 
 // Effet glitch sur le titre

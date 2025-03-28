@@ -36,12 +36,13 @@ body {
 }
 
 #particles-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
+    pointer-events: none;
 }
 
 .hero-section .container {
@@ -127,6 +128,26 @@ section:not(.hero-section) {
     box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
 }
 
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.project-card p {
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+}
+
 .tech-stack {
     margin-top: 1rem;
 }
@@ -135,6 +156,10 @@ section:not(.hero-section) {
     margin-right: 0.5rem;
     background-color: var(--secondary-color) !important;
     transition: transform 0.3s ease;
+}
+
+.badge:hover {
+    transform: rotate(5deg) scale(1.2);
 }
 
 /* Contact Form */
@@ -504,4 +529,371 @@ section + section {
 .command-output div:first-child span:last-child {
     animation: glowPulse 2s ease-in-out infinite;
     display: inline-block;
+}
+
+/* Styles des pages de projets */
+.project-header {
+    background: linear-gradient(135deg, rgba(0, 20, 0, 0.95), rgba(0, 40, 0, 0.9));
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    z-index: 1;
+    animation: zoomEffect 20s infinite alternate;
+}
+
+.project-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 255, 0, 0.1), transparent);
+    z-index: 2;
+}
+
+@keyframes zoomEffect {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.project-header .container {
+    position: relative;
+    z-index: 2;
+}
+
+.project-title {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    margin-bottom: 1rem;
+}
+
+.project-subtitle {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-section {
+    background: rgba(0, 20, 0, 0.85);
+    border: 1px solid var(--primary-color);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.2);
+}
+
+.project-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 255, 0, 0.05), transparent);
+    z-index: 1;
+    animation: sectionGlow 3s ease-in-out infinite;
+}
+
+@keyframes sectionGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title i {
+    font-size: 2rem;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tech-item, .infra-card, .security-card, .analysis-card, .methodology-card {
+    background: rgba(0, 20, 0, 0.9);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.tech-item:hover, .infra-card:hover, .security-card:hover, .analysis-card:hover, .methodology-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+}
+
+.tech-item::before, .infra-card::before, .security-card::before, .analysis-card::before, .methodology-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 255, 0, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-item:hover::before, .infra-card:hover::before, .security-card:hover::before, .analysis-card:hover::before, .methodology-card:hover::before {
+    opacity: 1;
+}
+
+.tech-item h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.tech-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-item li {
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tech-item li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.infrastructure-grid, .security-grid, .analysis-grid, .methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.infra-card, .security-card, .analysis-card, .methodology-card {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.infra-card:hover, .security-card:hover, .analysis-card:hover, .methodology-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+}
+
+.infra-icon, .security-icon, .analysis-icon, .methodology-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.back-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.back-button:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+/* Styles spécifiques aux pages de projets */
+.pentesting .project-header::before {
+    background: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5') center/cover;
+    filter: brightness(0.8) contrast(1.2);
+}
+
+.web-dev .project-header::before {
+    background: url('https://images.unsplash.com/photo-1627398242454-45a1465c2479') center/cover;
+    filter: brightness(0.8) contrast(1.2);
+}
+
+.reseau .project-header::before {
+    background: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8') center/cover;
+    filter: brightness(0.8) contrast(1.2);
+}
+
+.reverse .project-header::before {
+    background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c') center/cover;
+    filter: brightness(0.8) contrast(1.2);
+}
+
+/* Ajout d'effets de particules pour chaque page */
+.pentesting .matrix-background::before {
+    background-image: linear-gradient(0deg, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 0, 0, 0.05) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.web-dev .matrix-background::before {
+    background-image: linear-gradient(0deg, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 255, 0, 0.05) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.reseau .matrix-background::before {
+    background-image: linear-gradient(0deg, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 255, 0.05) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.reverse .matrix-background::before {
+    background-image: linear-gradient(0deg, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 255, 0, 0.05) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Ajout d'effets de lueur pour les sections */
+.project-section {
+    background: rgba(0, 20, 0, 0.85);
+    border: 1px solid var(--primary-color);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.2);
+}
+
+.project-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 255, 0, 0.05), transparent);
+    z-index: 1;
+    animation: sectionGlow 3s ease-in-out infinite;
+}
+
+@keyframes sectionGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Ajout d'effets de survol pour les cartes */
+.tech-item, .infra-card, .security-card, .analysis-card, .methodology-card {
+    background: rgba(0, 20, 0, 0.9);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.tech-item:hover, .infra-card:hover, .security-card:hover, .analysis-card:hover, .methodology-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+}
+
+.tech-item::before, .infra-card::before, .security-card::before, .analysis-card::before, .methodology-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 255, 0, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-item:hover::before, .infra-card:hover::before, .security-card:hover::before, .analysis-card:hover::before, .methodology-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes cardGlow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* Styles pour le conteneur de particules */
+#particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-header,
+.project-section,
+.tech-item,
+.arch-card,
+.feature-card,
+.infra-card,
+.security-card,
+.analysis-card,
+.methodology-card {
+    position: relative;
+    z-index: 2;
 }
